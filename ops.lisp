@@ -91,6 +91,26 @@
 (defparameter *banana-ops*
   (list
     ;;; your banana world operators to help the hungry monkey not to starve.
+    (make-op :action 'EAT-BANANAS
+	     :preconds '(HAS-BANANAS)
+	     :add-list '(NOT-HUNGRY)
+	     :del-list '(HUNGRY)
+)
+    (make-op :action 'GRASP-BANANAS
+	     :preconds '(AT-BANANAS EMPTY-HANDED)
+	     :add-list '(HAS-BANANAS))
+    (make-op :action 'CLIMB-ON-CHAIR 
+             :preconds '(CHAIR-AT-MIDDLE-ROOM ON-FLOOR)
+             :add-list '(AT-BANANAS)
+	     :del-list '(ON-FLOOR))
+    (make-op :action 'PUSH-CHAIR-FROM-DOOR-TO-MIDDLE-ROOM
+	     :preconds '(AT-DOOR)
+	     :add-list '(CHAIR-AT-MIDDLE-ROOM)
+	     :del-list '(CHAIR-AT-DOOR))
+    (make-op :action 'DROP-BALL
+	     :preconds '(HAS-BALL)
+	     :add-list '(EMPTY-HANDED)
+	     :del-list '(HAS-BALL))
     )
   )
   
